@@ -13,7 +13,7 @@ class Config:
     INPUT_NPZ_PATH = "./data/raw/lfs_dataset_3d_etkdg.npz"         # Ensure Input existence
     OUTPUT_DIR = "."
     DATASET_PATH = "./data/processed/lfs_atomic_features_uncompressed.npz"
-    MODEL_SAVE_PATH = "./ckpts/best_schnet_atomic_features_model.pth"
+    MODEL_SAVE_PATH = "./ckpts/best_CombNet_atomic_features_model.pth"
     LOG_FILE = "./ckpts/training.log"
     USE_COMP=False
     
@@ -36,7 +36,7 @@ class Config:
     ATOMIC_FEATURE_DIM = 68
     MAX_ATOMS = 150
     
-    # ===== SchNet Specific Parameters =====
+    # ===== CombNet Specific Parameters =====
     CUTOFF = 5.0
     N_INTERACTIONS = 3
     N_RBF = 20
@@ -53,8 +53,8 @@ class Config:
     N_SPHERICAL_HARMONICS = 30
     MAX_L = 5
     
-    # ===== SchNet Encoder Parameters =====
-    SCHNET_HIDDEN_DIM = 64
+    # ===== CombNet Encoder Parameters =====
+    CombNet_HIDDEN_DIM = 64
     
     # ===== Final MLP Parameters =====
     FINAL_MLP_HIDDEN1 = 256

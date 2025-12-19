@@ -4,9 +4,9 @@ Neural Network Models
 Contains all model architectures:
 - SimpleGNN: Basic graph neural network
 - RBFExpansion: Radial basis function expansion
-- SchNetInteraction: SchNet interaction layer
-- SchNetEncoder: SchNet encoder for molecular representation
-- SchNetWithAttention: Final model with attention mechanism
+- CombNetInteraction: CombNet interaction layer
+- CombNetEncoder: CombNet encoder for molecular representation
+- CombNetWithAttention: Final model with attention mechanism
 """
 
 import torch
@@ -96,9 +96,9 @@ class RBFExpansion(nn.Module):
         return distances_expanded
 
 
-class SchNetInteraction(nn.Module):
+class CombNetInteraction(nn.Module):
     """
-    SchNet interaction layer for message passing.
+    CombNet interaction layer for message passing.
     """
     def __init__(self, hidden_dim=64, n_rbf=20):
         super().__init__()
@@ -147,9 +147,9 @@ class SchNetInteraction(nn.Module):
         return h + h_out
 
 
-class SchNetEncoder(nn.Module):
+class CombNetEncoder(nn.Module):
     """
-    SchNet encoder for molecular representation learning.
+    CombNet encoder for molecular representation learning.
     """
     def __init__(self, input_dim=68, hidden_dim=64, output_dim=128, n_interactions=3, n_rbf=20):
         super().__init__()
@@ -161,7 +161,7 @@ class SchNetEncoder(nn.Module):
         self.rbf_expansion = RBFExpansion(start=0.0, stop=5.0, num_rbf=n_rbf)
         
         self.interactions = nn.ModuleList([
-            SchNetInteraction(hidden_dim=hidden_dim, n_rbf=n_rbf)
+            CombNetInteraction(hidden_dim=hidden_dim, n_rbf=n_rbf)
             for _ in range(n_interactions)
         ])
         
@@ -173,7 +173,7 @@ class SchNetEncoder(nn.Module):
         
     def forward(self, atomic_features, mask):
         """
-        Forward pass through SchNet encoder.
+        Forward pass through CombNet encoder.
         
         Args:
             atomic_features (Tensor): Atomic features, shape (B, max_len, 68)
@@ -236,9 +236,9 @@ class SchNetEncoder(nn.Module):
         return mol_repr
 
 
-class SchNetWithAttention(nn.Module):
+class CombNetWithAttention(nn.Module):
     """
-    SchNet-based model with attention mechanism for LFS prediction.
+    CombNet-based model with attention mechanism for LFS prediction.
     """
     def __init__(self, config):
         super().__init__()
@@ -246,9 +246,9 @@ class SchNetWithAttention(nn.Module):
         self.D_cond = config.D_COND
         self.D_attn = config.D_ATTN
         
-        self.schnet_encoder = SchNetEncoder(
+        self.CombNet_encoder = CombNetEncoder(
             input_dim=config.ATOMIC_FEATURE_DIM,
-            hidden_dim=config.SCHNET_HIDDEN_DIM,
+            hidden_dim=config.CombNet_HIDDEN_DIM,
             output_dim=self.D_mol,
             n_interactions=config.N_INTERACTIONS,
             n_rbf=config.N_RBF
@@ -279,7 +279,7 @@ class SchNetWithAttention(nn.Module):
         Returns:
             Tensor: LFS predictions, shape (B,)
         """
-        v_mol = self.schnet_encoder(atomic_features, mask)
+        v_mol = self.CombNet_encoder(atomic_features, mask)
         
         Q = self.proj_q(v_mol).unsqueeze(1)
         K = self.proj_k(conditions).unsqueeze(1)

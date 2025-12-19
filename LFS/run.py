@@ -22,19 +22,19 @@ from data_processing import (
     LFS_FeatureDataset,
     collate_fn_new
 )
-from models import SchNetWithAttention
+from models import CombNetWithAttention
 from training import train, evaluate
 
 
 def main():
     """
-    Main function for training SchNet model.
+    Main function for training CombNet model.
     """
     # Setup logger
     logger = setup_logger(Config.LOG_FILE)
     
     logger.info("=" * 60)
-    logger.info("Training SchNet Model with 68-Dimensional Atomic Features")
+    logger.info("Training CombNet Model with 68-Dimensional Atomic Features")
     logger.info("=" * 60)
     
     if not os.path.exists(Config.DATASET_PATH):
@@ -68,7 +68,7 @@ def main():
     logger.info(f"Data split: train={len(train_subset)}, val={len(val_subset)}, test={len(test_subset)}")
 
     # Model, optimizer, and loss function
-    model = SchNetWithAttention(Config).to(device)
+    model = CombNetWithAttention(Config).to(device)
     optimizer = optim.Adam(model.parameters(), lr=Config.LEARNING_RATE)
     criterion = nn.MSELoss() 
     
@@ -140,5 +140,5 @@ if __name__ == "__main__":
         exit(1)
     
     # Step 3: Train the model
-    logger.info("\nStep 3: Training SchNet model...")
+    logger.info("\nStep 3: Training CombNet model...")
     main()
