@@ -333,13 +333,14 @@ python run.py
   note={In preparation}
 }
 
-@dataset{si2025hac,
-  author={Si, Zhan and Hu, Jingjing and Liu, Deguang and Yu, Haizhu},
-  title={HAC Database: Hydrogen-Ammonia Combustion AIMD Dataset},
-  year={2025},
-  publisher={Zenodo},
-  doi={10.5281/zenodo.17972807},
-  url={https://zenodo.org/records/17972807}
+@dataset{zhan_et_al_2025,
+  author    = {Zhan, S. and Jingjing, H. and Deguang, L. and Haizhu, Y.},
+  title     = {{HAC Database}},
+  year      = {2025},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.17972807},
+  url       = {https://doi.org/10.5281/zenodo.17972807},
+  note      = {Data set}
 }
 ```
 
