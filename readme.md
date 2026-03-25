@@ -1,8 +1,8 @@
 # CombNetPack: Dynamic Atomic Representations for Combustion Modeling
 
 > **Unified deep learning of multiscale combustion kinetics from microscopic dynamics to macroscopic performance**  
-> Zhan Si<sup>1</sup>, Jingjing Hu<sup>2</sup>, Qiqi Zhang<sup>3</sup>, Deguang Liu<sup>1*</sup>, Hu Ding<sup>4</sup>, Haizhu Yu<sup>3*</sup>, Yao Fu<sup>1*</sup>
-> 
+> Zhan Si<sup>1,2</sup>, Jingjing Hu<sup>3</sup>, Qiqi Zhang<sup>2</sup>, Deguang Liu<sup>1*</sup>, Hu Ding<sup>4</sup>, Haizhu Yu<sup>2</sup> and Yao Fu<sup>1*</sup>
+
 > 1 Key Laboratory of Precision and Intelligent Chemistry, Anhui Province Key Laboratory of Biomass Chemistry, University of Science and Technology of China,Hefei, China
 > 
 > 2 Department of Chemistry and Centre for Atomic Engineering of Advanced Materials, Anhui Province Key Laboratory of Chemistry for Inorganic/Organic Hybrid Functionalized Materials, Anhui University, Hefei 230601,China
@@ -11,8 +11,7 @@
 > 
 > 4 School of Computer Science and Technology, University of Science and Technology of China, University of Science and Technology of China,Hefei, China
 > 
-> *Corresponding authors: ldg123@mail.ustc.edu.cn; yuhaizhu@ahu.edu.cn; fuyao@ustc.edu.cn
-
+> *Corresponding authors: ldg123@mail.ustc.edu.cn; fuyao@ustc.edu.cn
 
 ---
 
